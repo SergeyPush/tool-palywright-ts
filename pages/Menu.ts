@@ -9,6 +9,7 @@ class Menu extends AbstractPage {
   private categoryTitleLabel: Locator;
   private homePageLink: Locator;
   private cartQuantityBage: Locator;
+  private userMenuDropdown: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -21,6 +22,7 @@ class Menu extends AbstractPage {
       name: "Practice Software Testing - Toolshop",
     });
     this.cartQuantityBage = page.locator('[data-test="cart-quantity"]');
+    this.userMenuDropdown = page.locator("#user-menu");
   }
 
   async getCategoryTitle() {
@@ -57,6 +59,10 @@ class Menu extends AbstractPage {
     await this.homePageLink.click();
     await this.waitForResponse();
     await this.waitForAllResponses();
+  }
+
+  async getUserDropdownLocator() {
+    return this.userMenuDropdown;
   }
 }
 

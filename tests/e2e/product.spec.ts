@@ -65,7 +65,9 @@ test.describe("Test product page functionality", () => {
       "Unauthorized, can not add product to your favorite list."
     );
   });
+});
 
+test.describe("Authorized user tests", () => {
   test("Authorized user can add product to favorites", async ({ auth }) => {
     auth.homePage.openProduct(1);
     await auth.productPage.addProductToFavourites();
