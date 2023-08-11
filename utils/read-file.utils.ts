@@ -1,12 +1,12 @@
 import { readJSON, remove } from "fs-extra";
 
-export const getTokenFromJson = async (): Promise<string | null> => {
+export const getTokenFromJson = async (): Promise<string> => {
   try {
     const file = "token.json";
     const data = await readJSON(file);
     return data.access_token;
   } catch (error) {
-    return null;
+    return "";
   }
 };
 
