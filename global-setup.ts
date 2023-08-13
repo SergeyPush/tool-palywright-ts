@@ -1,4 +1,4 @@
-import AuthAPI from "./pages/AuthAPI";
+import AuthAPI from "./utils/auth-api.utils";
 import { createUser } from "./utils/create-user.utils";
 
 export async function globalSetup() {

@@ -2,8 +2,7 @@ import { test as base } from "@playwright/test";
 import App from "../../pages/App";
 import { getTokenFromJson } from "../../utils/read-file.utils";
 import { createUser } from "../../utils/create-user.utils";
-import AuthAPI from "../../pages/AuthAPI";
-import AuthAPISingle from "../../pages/AuthAPISingle";
+import AuthAPI from "../../utils/auth-api.utils";
 
 type MyFixtures = {
   app: App;
@@ -40,7 +39,6 @@ export const test = base.extend<MyFixtures>({
     page.context().addInitScript((value) => {
       localStorage.setItem("auth-token", value);
     }, token);
-
     const app = new App(page);
     await app.openApp();
     await use(app);
