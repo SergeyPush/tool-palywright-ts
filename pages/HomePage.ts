@@ -21,7 +21,7 @@ class HomePage extends AbstractPage {
   }
 
   async getProductItemsNamesTexts() {
-    await this.page.waitForLoadState("networkidle");
+    await this.waitForAllResponses();
     return this.productNamesLabels.allInnerTexts();
   }
 

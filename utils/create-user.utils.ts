@@ -10,7 +10,7 @@ export const createUser = (): CreateUserData => ({
   state: faker.location.state(),
   country: "UA",
   postcode: faker.location.zipCode(),
-  phone: faker.phone.number(),
+  phone: faker.phone.number("#########"),
   email: faker.internet.email(),
   password: "123456",
 });

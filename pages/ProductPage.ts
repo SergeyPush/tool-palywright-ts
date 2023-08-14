@@ -42,6 +42,8 @@ class ProductPage extends AbstractPage {
   }
 
   async getRelatedProductsNames() {
+    await this.waitForAllResponses();
+    // await this.waitForResponse("/related");
     return this.relatedProductsList.allInnerTexts();
   }
 

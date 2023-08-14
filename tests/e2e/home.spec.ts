@@ -52,8 +52,8 @@ test.describe("Test Home page", () => {
   test("Open Hand tools category from menu", async ({ app }) => {
     await app.mainMenu.navigateToHandTools();
     expect(app.homePage.getCurrentPath()).toBe("/category/hand-tools");
-    const products = await app.homePage.getProductItemsNamesTexts();
     expect(await app.mainMenu.getCategoryTitle()).toBe("Category: Hand Tools");
+    const products = await app.homePage.getProductItemsNamesTexts();
     expect(products.length).toBeGreaterThan(1);
   });
 
@@ -75,5 +75,3 @@ test.describe("Test Home page", () => {
     expect(products.length).toBe(0);
   });
 });
-
-// TODO Make pagination tests
