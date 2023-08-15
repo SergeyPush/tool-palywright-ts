@@ -5,6 +5,7 @@ import ProductPage from "./ProductPage";
 import RegisterPage from "./RegisterPage";
 import LoginPage from "./LoginPage";
 import MyAccountPage from "./MyAccountPage";
+import CartPage from "./CartPage";
 
 class App {
   private page: Page;
@@ -15,6 +16,7 @@ class App {
   registerPage: RegisterPage;
   loginPage: LoginPage;
   myAccountPage: MyAccountPage;
+  cartPage: CartPage;
 
   constructor(page: Page) {
     this.page = page;
@@ -25,6 +27,7 @@ class App {
     this.registerPage = new RegisterPage(page);
     this.loginPage = new LoginPage(page);
     this.myAccountPage = new MyAccountPage(page);
+    this.cartPage = new CartPage(page);
   }
 
   async openApp() {

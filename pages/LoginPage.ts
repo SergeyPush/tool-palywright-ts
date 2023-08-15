@@ -33,7 +33,7 @@ class LoginPage extends AbstractPage {
     await this.emailInput.type(email);
     await this.passwordInput.type(password);
     await this.loginButton.click();
-    await this.waitForResponse("/users/me", 200);
+    await this.waitForResponse("/users/me");
     await this.waitForUrl("/account");
   }
 }

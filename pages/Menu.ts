@@ -10,6 +10,7 @@ class Menu extends AbstractPage {
   private homePageLink: Locator;
   private cartQuantityBage: Locator;
   private userMenuDropdown: Locator;
+  private cartLink: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -23,6 +24,7 @@ class Menu extends AbstractPage {
     });
     this.cartQuantityBage = page.locator('[data-test="cart-quantity"]');
     this.userMenuDropdown = page.locator("#user-menu");
+    this.cartLink = page.locator('[data-test="nav-cart"]');
   }
 
   async getCategoryTitle() {
@@ -48,6 +50,10 @@ class Menu extends AbstractPage {
     return Number(cartQuantity);
   }
 
+  async getCartQuantityLocator() {
+    return this.cartQuantityBage;
+  }
+
   async navigateToSpecialTools() {
     await this.categoriesMenuDropdown.click();
     await this.categorySpecialTools.click();
@@ -63,6 +69,12 @@ class Menu extends AbstractPage {
 
   async getUserDropdownLocator() {
     return this.userMenuDropdown;
+  }
+
+  async openCartPage() {
+    await this.cartLink.waitFor({ state: "visible" });
+    await this.cartLink.click();
+    await this.waitForUrl("/checkout");
   }
 }
 
