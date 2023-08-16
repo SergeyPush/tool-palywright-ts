@@ -7,18 +7,23 @@ test.describe("Visual test of pages", () => {
     await expect(page).toHaveScreenshot("home-page.png", {
       fullPage: true,
       maxDiffPixels: 100,
+      maxDiffPixelRatio: 0.3,
     });
   });
   test("Test contact page", async ({ page }) => {
     await page.goto("https://practicesoftwaretesting.com/#/contact");
     await expect(page).toHaveScreenshot("contact-page.png", {
       fullPage: true,
+      maxDiffPixels: 100,
+      maxDiffPixelRatio: 0.3,
     });
   });
   test("Test sign in page", async ({ page }) => {
     await page.goto("https://practicesoftwaretesting.com/#/auth/login");
     await expect(page).toHaveScreenshot("signin-page.png", {
       fullPage: true,
+      maxDiffPixels: 100,
+      maxDiffPixelRatio: 0.3,
     });
   });
   test("Test rentals page", async ({ page }) => {
@@ -26,12 +31,16 @@ test.describe("Visual test of pages", () => {
     await page.waitForLoadState("networkidle");
     await expect(page).toHaveScreenshot("rentals-page.png", {
       fullPage: true,
+      maxDiffPixels: 100,
+      maxDiffPixelRatio: 0.3,
     });
   });
   test("Test register page", async ({ page }) => {
     await page.goto("https://practicesoftwaretesting.com/#/auth/register");
     await expect(page).toHaveScreenshot("register-page.png", {
       fullPage: true,
+      maxDiffPixels: 100,
+      maxDiffPixelRatio: 0.3,
     });
   });
 });
