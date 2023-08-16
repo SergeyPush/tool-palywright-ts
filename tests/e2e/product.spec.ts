@@ -69,7 +69,7 @@ test.describe("Test product page functionality", () => {
 
 test.describe("Authorized user tests", () => {
   test("Authorized user can add product to favorites", async ({ auth }) => {
-    auth.homePage.openProduct(1);
+    await auth.homePage.openProduct(1);
     await auth.productPage.addProductToFavourites();
     expect(await auth.productPage.getMessageText()).toBe(
       "Product added to your favorites list."
