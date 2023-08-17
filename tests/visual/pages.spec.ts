@@ -1,46 +1,43 @@
 import { expect, test } from "@playwright/test";
 
-test.describe("Visual test of pages", () => {
-  test("Test home page", async ({ page }) => {
-    await page.goto("/");
-    await page.waitForLoadState("networkidle");
-    await expect(page).toHaveScreenshot("home-page.png", {
-      fullPage: true,
-      maxDiffPixels: 100,
-      maxDiffPixelRatio: 0.3,
+const cases = [
+  {
+    name: "Home page",
+    path: "/",
+    file: "home-page.png",
+  },
+  {
+    name: "Contact page",
+    path: "https://practicesoftwaretesting.com/#/contact",
+    file: "contact-page.png",
+  },
+  {
+    name: "Sign in page",
+    path: "https://practicesoftwaretesting.com/#/auth/login",
+    file: "signin-page.png",
+  },
+  {
+    name: "Rentals page",
+    path: "https://practicesoftwaretesting.com/#/rentals",
+    file: "rentals-page.png",
+  },
+  {
+    name: "Register page",
+    path: "https://practicesoftwaretesting.com/#/auth/register",
+    file: "register-page.png",
+  },
+];
+
+test.describe.only("Visual test of pages", () => {
+  for (const item of cases) {
+    test(`Test ${item.name}`, async ({ page }) => {
+      await page.goto(item.path);
+      await page.waitForLoadState("networkidle");
+      await expect(page).toHaveScreenshot(item.file, {
+        fullPage: true,
+        maxDiffPixels: 100,
+        maxDiffPixelRatio: 0.1,
+      });
     });
-  });
-  test("Test contact page", async ({ page }) => {
-    await page.goto("https://practicesoftwaretesting.com/#/contact");
-    await expect(page).toHaveScreenshot("contact-page.png", {
-      fullPage: true,
-      maxDiffPixels: 100,
-      maxDiffPixelRatio: 0.3,
-    });
-  });
-  test("Test sign in page", async ({ page }) => {
-    await page.goto("https://practicesoftwaretesting.com/#/auth/login");
-    await expect(page).toHaveScreenshot("signin-page.png", {
-      fullPage: true,
-      maxDiffPixels: 100,
-      maxDiffPixelRatio: 0.3,
-    });
-  });
-  test("Test rentals page", async ({ page }) => {
-    await page.goto("https://practicesoftwaretesting.com/#/rentals");
-    await page.waitForLoadState("networkidle");
-    await expect(page).toHaveScreenshot("rentals-page.png", {
-      fullPage: true,
-      maxDiffPixels: 100,
-      maxDiffPixelRatio: 0.3,
-    });
-  });
-  test("Test register page", async ({ page }) => {
-    await page.goto("https://practicesoftwaretesting.com/#/auth/register");
-    await expect(page).toHaveScreenshot("register-page.png", {
-      fullPage: true,
-      maxDiffPixels: 100,
-      maxDiffPixelRatio: 0.3,
-    });
-  });
+  }
 });
