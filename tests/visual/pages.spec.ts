@@ -28,7 +28,7 @@ const cases = [
   },
 ];
 
-test.describe.only("Visual test of pages", () => {
+test.describe("Visual test of pages", () => {
   for (const item of cases) {
     test(`Test ${item.name}`, async ({ page }) => {
       await page.goto(item.path);
