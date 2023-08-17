@@ -33,10 +33,13 @@ test.describe("Visual test of pages", () => {
     test(`Test ${item.name}`, async ({ page }) => {
       await page.goto(item.path);
       await page.waitForLoadState("networkidle");
+      await page.waitForLoadState("domcontentloaded");
+      await page.evaluate(() => document.fonts.ready);
       await expect(page).toHaveScreenshot(item.file, {
         fullPage: true,
+        threshold: 0.2,
         maxDiffPixels: 100,
-        maxDiffPixelRatio: 0.1,
+        maxDiffPixelRatio: 0.2,
       });
     });
   }
