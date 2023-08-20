@@ -21,7 +21,11 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   // reporter: "list",
-  reporter: [["list"], ["junit", { outputFile: "test-results/report.xml" }]],
+  reporter: [
+    ["list"],
+    ["html"],
+    ["junit", { outputFile: "test-results/report.xml" }],
+  ],
   // reporter: [["list"], ["html"]],
   globalSetup: require.resolve("./global-setup"),
 
