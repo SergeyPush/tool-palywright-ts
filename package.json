@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "report": "npx playwright show-report",
-    "update-snapshots": "npx playwright test tests/visual",
+    "update-snapshots": "npx playwright test tests/visual --update-snapshots",
     "test": "npx playwright test",
     "test-headed": "npx playwright test --headed"
   },
