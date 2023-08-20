@@ -27,3 +27,9 @@ jobs:
           retention-days: 30
       - name: Test Reporting
         uses: phoenix-actions/test-reporting@v12
+        id: test-report # Set ID reference for step
+        if: success() || failure() # run this step even if previous step failed
+        with:
+          name: Playwright Tests result # Name of the check run which will be created
+          path: test-results/report*.xml # Path to test results
+          reporter: jest-junit # Format of test results
