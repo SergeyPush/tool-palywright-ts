@@ -25,7 +25,7 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
-      - name: Test Reporting XML
+      - name: Test Reporting
         uses: phoenix-actions/test-reporting@v12
         id: test-report-xml # Set ID reference for step
         if: success() || failure() # run this step even if previous step failed
@@ -33,7 +33,7 @@ jobs:
           name: Playwright Tests result # Name of the check run which will be created
           path: test-results/report*.xml # Path to test results
           reporter: java-junit # Format of test results
-      - name: Test Reporting JSON
+      - name: Test Reporting
         uses: phoenix-actions/test-reporting@v12
         id: test-report-json # Set ID reference for step
         if: success() || failure() # run this step even if previous step failed
