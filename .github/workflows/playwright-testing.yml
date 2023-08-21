@@ -25,11 +25,14 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
-      - name: Test Reporting
-        uses: phoenix-actions/test-reporting@v12
-        id: test-report-json # Set ID reference for step
-        if: success() || failure() # run this step even if previous step failed
+      - name: Test Summary
+        uses: test-summary/action@v2
         with:
-          name: Playwright Tests result # Name of the check run which will be created
-          path: test-results/results*.json # Path to test results
-          reporter: mocha-json # Format of test results
+          paths: "test-results/report.xml"
+        if: always()
+      - name: Upload test summary
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-summary
+          path: test-summary.md
+        if: always()
