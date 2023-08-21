@@ -30,9 +30,9 @@ jobs:
         with:
           paths: "test-results/report.xml"
         if: always()
-      - name: Publish test report as artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: Test report
-          path: test-results/report.json
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2.9.0
         if: always()
+        with:
+          files: |
+            test-results/**/*.xml
