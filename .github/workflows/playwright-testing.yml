@@ -30,9 +30,7 @@ jobs:
         with:
           paths: "test-results/report.xml"
         if: always()
-      - name: Upload test summary
-        uses: actions/upload-artifact@v3
+      - name: Publish test results
+        uses: softprops/action-gh-pages@v2
         with:
-          name: test-summary
-          path: test-summary.md
-        if: always()
+          publish_dir: playwright-report
