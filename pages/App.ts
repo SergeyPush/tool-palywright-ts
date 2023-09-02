@@ -8,7 +8,6 @@ import MyAccountPage from "./MyAccountPage";
 import CartPage from "./CartPage";
 
 class App {
-  private page: Page;
   private baseUrl: string;
   homePage: HomePage;
   mainMenu: Menu;
@@ -18,8 +17,7 @@ class App {
   myAccountPage: MyAccountPage;
   cartPage: CartPage;
 
-  constructor(page: Page) {
-    this.page = page;
+  constructor(private page: Page) {
     this.baseUrl = "https://practicesoftwaretesting.com/#";
     this.homePage = new HomePage(page);
     this.mainMenu = new Menu(page);

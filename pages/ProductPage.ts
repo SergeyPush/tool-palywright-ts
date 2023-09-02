@@ -3,31 +3,23 @@ import AbstractPage from "./AbstractPage";
 import { stripDollars } from "../utils/prices.utils";
 
 class ProductPage extends AbstractPage {
-  private productNameLabel: Locator;
-  private productPriceLabel: Locator;
-  private decreaseQuantityButton: Locator;
-  private increaseQuantityButton: Locator;
-  private quantityInput: Locator;
-  private addToCartButton: Locator;
-  private addToFavouritesButton: Locator;
-  private toastMessage: Locator;
-  private relatedProductsList: Locator;
+  private productNameLabel = this.page.locator(".col-md-6 h1");
+  private productPriceLabel = this.page.locator('[data-test="unit-price"]');
+  private decreaseQuantityButton = this.page.locator(
+    '[data-test="decrease-quantity"]'
+  );
+  private increaseQuantityButton = this.page.locator(
+    '[data-test="increase-quantity"]'
+  );
+  private quantityInput = this.page.locator('[data-test="quantity"]');
+  private addToCartButton = this.page.locator('[data-test="add-to-cart"]');
+  private addToFavouritesButton = this.page.locator(
+    '[data-test="add-to-favorites"]'
+  );
+  private toastMessage = this.page.getByRole("alert");
+  private relatedProductsList = this.page.locator("h5.card-title");
   constructor(page: Page) {
     super(page);
-
-    this.productNameLabel = page.locator(".col-md-6 h1");
-    this.productPriceLabel = page.locator('[data-test="unit-price"]');
-    this.decreaseQuantityButton = page.locator(
-      '[data-test="decrease-quantity"]'
-    );
-    this.quantityInput = page.locator('[data-test="quantity"]');
-    this.increaseQuantityButton = page.locator(
-      '[data-test="increase-quantity"]'
-    );
-    this.addToCartButton = page.locator('[data-test="add-to-cart"]');
-    this.addToFavouritesButton = page.locator('[data-test="add-to-favorites"]');
-    this.toastMessage = page.getByRole("alert");
-    this.relatedProductsList = page.locator("h5.card-title");
   }
 
   async getProductNameText() {

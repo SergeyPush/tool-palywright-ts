@@ -27,12 +27,6 @@ export const test = base.extend<MyFixtures>({
   },
   globalToken: async ({}, use) => {
     let token = await getTokenFromJson();
-    // const authApiGlobal = AuthAPISingle.getAuthAPI();
-    // const newUser = createUser();
-    // const { email } = await authApiGlobal.createAccount(newUser);
-    // await authApiGlobal.login(email, newUser.password);
-    // const token = authApiGlobal.getToken;
-
     await use(token);
   },
   auth: async ({ page, token }, use) => {

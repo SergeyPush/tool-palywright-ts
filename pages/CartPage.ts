@@ -3,13 +3,12 @@ import AbstractPage from "./AbstractPage";
 import { stripDollars } from "../utils/prices.utils";
 
 class CartPage extends AbstractPage {
-  private productList: Locator;
-  private totalPriceLabel: Locator;
+  private productList: Locator = this.page.locator("tbody > tr");
+  private totalPriceLabel: Locator = this.page.locator("tfoot td:nth-child(5)");
   private proceedToCheckoutButton: Locator;
+
   constructor(page: Page) {
     super(page);
-    this.productList = page.locator("tbody > tr");
-    this.totalPriceLabel = page.locator("tfoot td:nth-child(5)");
   }
 
   async getSingleItemInfo(item: Locator) {

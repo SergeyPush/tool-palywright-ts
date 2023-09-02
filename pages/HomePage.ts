@@ -3,21 +3,15 @@ import AbstractPage from "./AbstractPage";
 import { stripDollars } from "../utils/prices.utils";
 
 class HomePage extends AbstractPage {
-  private productItems: Locator;
-  private sortSelect: Locator;
-  private productNamesLabels: Locator;
-  private searchInput: Locator;
-  private filtersSection: Locator;
-  private productItem: Locator;
+  private productItems = this.page.locator(".col-md-9 .container");
+  private sortSelect = this.page.locator('[data-test="sort"]');
+  private productNamesLabels = this.page.locator(".card-title");
+  private searchInput = this.page.locator("[data-test='search-query']");
+  private filtersSection = this.page.locator("#filters");
+  private productItem = this.page.locator(".container .card");
 
   constructor(page: Page) {
     super(page);
-    this.productItems = page.locator(".col-md-9 .container");
-    this.productItem = page.locator(".container .card");
-    this.productNamesLabels = page.locator(".card-title");
-    this.sortSelect = page.locator('[data-test="sort"]');
-    this.searchInput = page.locator("[data-test='search-query']");
-    this.filtersSection = page.locator("#filters");
   }
 
   async getProductItemsNamesTexts() {

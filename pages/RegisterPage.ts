@@ -3,58 +3,45 @@ import AbstractPage from "./AbstractPage";
 import { CreateUserData } from "../types/user.type";
 
 class RegisterPage extends AbstractPage {
-  private firstNameInput: Locator;
-  private fistNameErrorMessage: Locator;
-  private lastNameInput: Locator;
-  private lastNameErrorMessage: Locator;
-  private dobInput: Locator;
-  private dobErrorMessage: Locator;
-  private addressInput: Locator;
-  private addressErrorMessage: Locator;
-  private postCodeInput: Locator;
-  private postCodeErrorMessage: Locator;
-  private cityInput: Locator;
-  private cityErrorMessage: Locator;
-  private stateInput: Locator;
-  private stateErrorMessage: Locator;
-  private countryInput: Locator;
-  private countryErrorMessage: Locator;
-  private phoneInput: Locator;
-  private phoneErrorMessage: Locator;
-  private emailInput: Locator;
-  private emailErrorMessage: Locator;
-  private passwordInput: Locator;
-  private passwordErrorMessage: Locator;
-  private registerButton: Locator;
-  private registerPageTitleLabel: Locator;
+  private firstNameInput = this.page.locator('[data-test="first-name"]');
+  private fistNameErrorMessage = this.page.locator(
+    '[data-test="first-name-error"]'
+  );
+  private lastNameInput = this.page.locator('[data-test="last-name"]');
+  private lastNameErrorMessage = this.page.locator(
+    '[data-test="last-name-error"]'
+  );
+  private dobInput = this.page.locator('[data-test="dob"]');
+  private dobErrorMessage = this.page.locator('[data-test="dob-error"]');
+  private addressInput = this.page.locator('[data-test="address"]');
+  private addressErrorMessage = this.page.locator(
+    '[data-test="address-error"]'
+  );
+  private postCodeInput = this.page.locator('[data-test="postcode"]');
+  private postCodeErrorMessage = this.page.locator(
+    '[data-test="postcode-error"]'
+  );
+  private cityInput = this.page.locator('[data-test="city"]');
+  private cityErrorMessage = this.page.locator('[data-test="city-error"]');
+  private stateInput = this.page.locator('[data-test="state"]');
+  private stateErrorMessage = this.page.locator('[data-test="state-error"]');
+  private countryInput = this.page.locator('[data-test="country"]');
+  private countryErrorMessage = this.page.locator(
+    '[data-test="country-error"]'
+  );
+  private phoneInput = this.page.locator('[data-test="phone"]');
+  private phoneErrorMessage = this.page.locator('[data-test="phone-error"]');
+  private emailInput = this.page.locator('[data-test="email"]');
+  private emailErrorMessage = this.page.locator('[data-test="email-error"]');
+  private passwordInput = this.page.locator('[data-test="password"]');
+  private passwordErrorMessage = this.page.locator(
+    '[data-test="password-error"]'
+  );
+  private registerButton = this.page.locator('[data-test="register-submit"]');
+  private registerPageTitleLabel = this.page.locator(".auth-container h3");
 
   constructor(page: Page) {
     super(page);
-
-    this.firstNameInput = page.locator('[data-test="first-name"]');
-    this.fistNameErrorMessage = page.locator('[data-test="first-name-error"]');
-    this.lastNameInput = page.locator('[data-test="last-name"]');
-    this.lastNameErrorMessage = page.locator('[data-test="last-name-error"]');
-    this.dobInput = page.locator('[data-test="dob"]');
-    this.dobErrorMessage = page.locator('[data-test="dob-error"]');
-    this.addressInput = page.locator('[data-test="address"]');
-    this.addressErrorMessage = page.locator('[data-test="address-error"]');
-    this.postCodeInput = page.locator('[data-test="postcode"]');
-    this.postCodeErrorMessage = page.locator('[data-test="postcode-error"]');
-    this.cityInput = page.locator('[data-test="city"]');
-    this.cityErrorMessage = page.locator('[data-test="city-error"]');
-    this.stateInput = page.locator('[data-test="state"]');
-    this.stateErrorMessage = page.locator('[data-test="state-error"]');
-    this.countryInput = page.locator('[data-test="country"]');
-    this.countryErrorMessage = page.locator('[data-test="country-error"]');
-    this.phoneInput = page.locator('[data-test="phone"]');
-    this.phoneErrorMessage = page.locator('[data-test="phone-error"]');
-    this.emailInput = page.locator('[data-test="email"]');
-    this.emailErrorMessage = page.locator('[data-test="email-error"]');
-    this.passwordInput = page.locator('[data-test="password"]');
-    this.passwordErrorMessage = page.locator('[data-test="password-error"]');
-    this.registerButton = page.locator('[data-test="register-submit"]');
-    this.registerPageTitleLabel = page.locator(".auth-container h3");
   }
 
   async openRegisterPage() {
@@ -77,7 +64,7 @@ class RegisterPage extends AbstractPage {
     await this.emailInput.fill(user.email);
     await this.passwordInput.fill(user.password);
     await this.registerButton.click();
-    await this.waitForResponse("/register", 201);
+    await this.waitForResponse("/register");
   }
 }
 

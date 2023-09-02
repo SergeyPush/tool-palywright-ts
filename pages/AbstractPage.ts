@@ -18,7 +18,7 @@ class AbstractPage {
     return this.page;
   }
 
-  protected getCurrentPath() {
+  getCurrentPath() {
     const url = this.page.url();
     return url.replace(`${this.baseUrl}`, "");
   }
