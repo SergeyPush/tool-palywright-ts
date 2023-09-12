@@ -2,6 +2,8 @@ node_modules/
 /test-results/
 /playwright-report/
 /playwright/.cache/
+/.idea
 state.json
 token.json
 .DS_Store
+.env
