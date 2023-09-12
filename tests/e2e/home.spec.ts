@@ -1,4 +1,4 @@
-import { test } from "../config/config";
+import { test } from "../../config/config";
 import { expect } from "@playwright/test";
 import {
   nameSortingCases,

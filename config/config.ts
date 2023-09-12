@@ -1,8 +1,9 @@
-import { test as base } from "@playwright/test";
-import App from "../../pages/App";
-import { getTokenFromJson } from "../../utils/read-file.utils";
-import { createUser } from "../../utils/create-user.utils";
-import AuthAPI from "../../utils/auth-api.utils";
+import { test as base, request } from "@playwright/test";
+import App from "../pages/App";
+import { getTokenFromJson } from "../utils/read-file.utils";
+import { createUser } from "../utils/create-user.utils";
+import AuthAPI from "../api/auth-api.api";
+import BaseAPI from "../api/base-api.api";
 
 type MyFixtures = {
   app: App;
@@ -10,6 +11,7 @@ type MyFixtures = {
   globalToken: string;
   auth: App;
   globalAuth: App;
+  api: BaseAPI;
 };
 
 export const test = base.extend<MyFixtures>({
@@ -18,11 +20,14 @@ export const test = base.extend<MyFixtures>({
     await app.openApp();
     await use(app);
   },
-  token: async ({}, use) => {
-    const authApi = new AuthAPI();
+  api: async ({ request }, use) => {
+    const api = new BaseAPI(request);
+    await use(api);
+  },
+  token: async ({ api }, use) => {
     const newUser = createUser();
-    const { email } = await authApi.createAccount(newUser);
-    const token = await authApi.login(email, newUser.password);
+    const { email } = await api.auth.createAccount(newUser);
+    const token = await api.auth.login(email, newUser.password);
     await use(token);
   },
   globalToken: async ({}, use) => {
@@ -37,7 +42,6 @@ export const test = base.extend<MyFixtures>({
     await app.openApp();
     await use(app);
   },
-
   globalAuth: async ({ page, globalToken }, use) => {
     page.context().addInitScript((value) => {
       localStorage.setItem("auth-token", value);

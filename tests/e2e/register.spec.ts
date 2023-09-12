@@ -1,5 +1,5 @@
 import { expect } from "@playwright/test";
-import { test } from "../config/config";
+import { test } from "../../config/config";
 import { createUser } from "../../utils/create-user.utils";
 
 test.describe("Register page tests", () => {

@@ -1,7 +1,7 @@
 import { expect } from "@playwright/test";
-import { test } from "../config/config";
+import { test } from "../../config/config";
 import { createUser } from "../../utils/create-user.utils";
-import AuthAPI from "../../utils/auth-api.utils";
+import AuthAPI from "../../api/auth-api.api";
 
 test.describe("Login tests", () => {
   test.beforeEach(async ({ app }) => {
@@ -13,10 +13,9 @@ test.describe("Login tests", () => {
     expect(title).toBe("Login");
   });
 
-  test("User can login successfully", async ({ app }) => {
+  test("User can login successfully", async ({ app, api }) => {
     const user = createUser();
-    const auth = new AuthAPI();
-    await auth.createAccount(user);
+    await api.auth.createAccount(user);
     await app.loginPage.loginApplication(user.email, user.password);
     const title = await app.myAccountPage.getTitleLabelText();
     expect(title).toBe("My account");

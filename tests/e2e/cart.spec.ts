@@ -1,5 +1,5 @@
 import { expect } from "@playwright/test";
-import { test } from "../config/config";
+import { test } from "../../config/config";
 
 test.describe("Test cart page", () => {
   test.beforeEach(async ({ app }) => {

@@ -1,5 +1,5 @@
 import { expect } from "@playwright/test";
-import { test } from "../config/config";
+import { test } from "../../config/config";
 
 test.describe("Test product page functionality", () => {
   test("Open proudct", async ({ app }) => {

@@ -1,4 +1,5 @@
-import { defineConfig, devices } from "@playwright/test";
+import { defineConfig, devices, expect } from "@playwright/test";
+import { validateJson } from "./config/expect.config";
 
 /**
  * Read environment variables from file.
@@ -22,13 +23,14 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   // reporter: "list",
   reporter: [
+    // ["dot"],
     ["list"],
     ["html"],
     ["json", { outputFile: "test-results/report.json" }],
     ["junit", { outputFile: "test-results/report.xml" }],
   ],
   // reporter: [["list"], ["html"]],
-  globalSetup: require.resolve("./global-setup"),
+  // globalSetup: require.resolve("./global-setup"),
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
@@ -90,4 +92,22 @@ export default defineConfig({
   //   url: 'http://127.0.0.1:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
+});
+
+expect.extend({
+  toBeWithinRange(received: number, floor: number, ceiling: number) {
+    const pass = received >= floor && received <= ceiling;
+    if (pass) {
+      return {
+        message: () => "passed",
+        pass: true,
+      };
+    } else {
+      return {
+        message: () => "failed",
+        pass: false,
+      };
+    }
+  },
+  validateJson,
 });
