@@ -6,8 +6,11 @@ export async function globalSetup({ request }) {
   const authApi = new AuthAPI(request);
   const createdUser = await authApi.createAccount(user);
 
-  const token = await authApi.login(createdUser.email, user.password);
-  await authApi.saveTokenToJson(token);
+  const { access_token } = await authApi.login(
+    createdUser.email,
+    user.password
+  );
+  await authApi.saveTokenToJson(access_token);
 }
 
 export default globalSetup;

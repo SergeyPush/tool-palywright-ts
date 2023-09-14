@@ -1,4 +1,4 @@
-import { APIRequest, APIRequestContext, request } from "@playwright/test";
+import { APIRequestContext } from "@playwright/test";
 import { CreateUserData, CreateUserResponse } from "../types/user.type";
 import { writeJSON } from "fs-extra";
 import { API_BASE_URL } from "../utils/get-config.utils";
@@ -8,23 +8,21 @@ class AuthAPI {
 
   constructor(private request: APIRequestContext) {}
 
-  async login(email: string, password: string): Promise<string> {
+  async login(email: string, password: string) {
     const res = await this.request.post(`${this.apiBaseUrl}/users/login`, {
       data: {
         email,
         password,
       },
     });
-    const { access_token } = await res.json();
-    return access_token;
+    return res.json();
   }
 
   async createAccount(data: CreateUserData): Promise<CreateUserResponse> {
     const res = await this.request.post(`${this.apiBaseUrl}/users/register`, {
       data,
     });
-    const createdAccount = await res.json();
-    return createdAccount;
+    return res.json();
   }
 
   async saveTokenToJson(token: string) {

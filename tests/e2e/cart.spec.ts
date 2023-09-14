@@ -15,7 +15,6 @@ test.describe("Test cart page", () => {
   });
 
   test("User can add product to cart", async ({ app }) => {
-    // Test cart
     await app.mainMenu.openCartPage();
     const data = await app.cartPage.getAllProductsInfo();
     const totalPrice = await app.cartPage.getTotalPriceNumber();

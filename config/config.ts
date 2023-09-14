@@ -1,8 +1,7 @@
-import { test as base, request } from "@playwright/test";
+import { test as base } from "@playwright/test";
 import App from "../pages/App";
 import { getTokenFromJson } from "../utils/read-file.utils";
 import { createUser } from "../utils/create-user.utils";
-import AuthAPI from "../api/auth-api.api";
 import BaseAPI from "../api/base-api.api";
 
 type MyFixtures = {
@@ -27,8 +26,8 @@ export const test = base.extend<MyFixtures>({
   token: async ({ api }, use) => {
     const newUser = createUser();
     const { email } = await api.auth.createAccount(newUser);
-    const token = await api.auth.login(email, newUser.password);
-    await use(token);
+    const { access_token } = await api.auth.login(email, newUser.password);
+    await use(access_token);
   },
   globalToken: async ({}, use) => {
     let token = await getTokenFromJson();

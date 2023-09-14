@@ -3,7 +3,7 @@ import { test } from "../../config/config";
 import { ProductSchema, ProductsSchema } from "../../models/product.model";
 
 test.describe("Product API tests", () => {
-  test("Get list of products", async ({ api }) => {
+  test("Get list of products @api", async ({ api }) => {
     const res = await api.productsApi.getProductList();
     expect(res.ok()).toBeTruthy();
 
@@ -11,7 +11,7 @@ test.describe("Product API tests", () => {
     expect(ProductsSchema).validateJson(data);
   });
 
-  test("Get single product", async ({ api }) => {
+  test("Get single product @api", async ({ api }) => {
     const res = await api.productsApi.getSingleProduct(1);
     expect(res.ok()).toBeTruthy();
 
@@ -19,7 +19,7 @@ test.describe("Product API tests", () => {
     expect(ProductSchema).validateJson(data);
   });
 
-  test("Get related products", async ({ api }) => {
+  test("Get related products @api", async ({ api }) => {
     const res = await api.productsApi.getRelatedProducts(2);
     expect(res.ok()).toBeTruthy();
 
@@ -28,7 +28,7 @@ test.describe("Product API tests", () => {
     expect(ProductsSchema).validateJson(data);
   });
 
-  test("Get list of products with price range", async ({ api }) => {
+  test("Get list of products with price range @api", async ({ api }) => {
     const res = await api.productsApi.getProductListWithPriceRange(40, 60);
     expect(res.ok()).toBeTruthy();
 
@@ -42,7 +42,7 @@ test.describe("Product API tests", () => {
     });
   });
 
-  test("Search product by name", async ({ api }) => {
+  test("Search product by name @api", async ({ api }) => {
     const res = await api.productsApi.searchProducts("Hammer");
     expect(res.ok()).toBeTruthy();
 
