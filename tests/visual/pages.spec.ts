@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 const cases = [
   {
     name: "Home page",
-    path: "/",
+    path: "https://practicesoftwaretesting.com/#",
     file: "home-page.png",
   },
   {
