@@ -1,5 +1,9 @@
 import { APIRequestContext } from "@playwright/test";
-import { CreateUserData, CreateUserResponse } from "../types/user.type";
+import {
+  CreateUserData,
+  CreateUserResponse,
+  IUserResponseInfo,
+} from "../types/user.type";
 import { writeJSON } from "fs-extra";
 import { API_BASE_URL } from "../utils/get-config.utils";
 
@@ -23,6 +27,13 @@ class AuthAPI {
       data,
     });
     return res.json();
+  }
+
+  async getUserInfo(token: string) {
+    const res = await this.request.get(`${this.apiBaseUrl}/users/me`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return (await res.json()) as IUserResponseInfo;
   }
 
   async saveTokenToJson(token: string) {

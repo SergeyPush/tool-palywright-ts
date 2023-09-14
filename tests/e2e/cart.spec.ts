@@ -3,12 +3,12 @@ import { test } from "../../config/config";
 
 test.describe("Test cart page", () => {
   test.beforeEach(async ({ app }) => {
-    await app.homePage.openProduct(1);
+    await app.homePage.openProduct(0);
     await app.productPage.addProductToCart();
     const quantity = await app.mainMenu.getCartQuantityLocator();
     expect(quantity).toHaveText("1");
     await app.mainMenu.navigateToHomePage();
-    await app.homePage.openProduct(2);
+    await app.homePage.openProduct(4);
     await app.productPage.addProductToCart();
     await app.productPage.addProductToCart();
     expect(quantity).toHaveText("3");

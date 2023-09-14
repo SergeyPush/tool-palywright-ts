@@ -13,13 +13,13 @@ test.describe("Test product page functionality", () => {
   });
 
   test("Add product to cart", async ({ app }) => {
-    await app.homePage.openProduct(1);
+    await app.homePage.openProduct(0);
     await app.productPage.addProductToCart();
     expect(await app.productPage.getMessageText()).toBe(
       "Product added to shopping cart."
     );
     await app.mainMenu.navigateToHomePage();
-    await app.homePage.openProduct(2);
+    await app.homePage.openProduct(4);
     await app.productPage.addProductToCart();
     expect(await app.productPage.getMessageText()).toBe(
       "Product added to shopping cart."
@@ -29,7 +29,7 @@ test.describe("Test product page functionality", () => {
   });
 
   test("Add several products to cart", async ({ app }) => {
-    await app.homePage.openProduct(1);
+    await app.homePage.openProduct(0);
     await app.productPage.addProductToCart();
     expect(await app.mainMenu.getCartQuantityText()).toBe(1);
     expect(await app.productPage.getMessageText()).toBe(

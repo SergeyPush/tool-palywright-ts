@@ -1,4 +1,4 @@
-import { email, minLength, object, parse, string, BaseSchema } from "valibot"; // 0.87 kB
+import { BaseSchema, parse } from "valibot"; // 0.87 kB
 
 export function validateJson(received: BaseSchema, data: any) {
   try {
@@ -8,9 +8,10 @@ export function validateJson(received: BaseSchema, data: any) {
       pass: true,
     };
   } catch (error) {
+    // console.log(JSON.stringify(error));
     return {
       message: () =>
-        `${error.message}, Expected: ${error.issues[0].validation}. Recieved: ${error.issues[0].input}`,
+        `${error.message}, Field: ${error.issues[0].path[0].key} Expected: ${error.issues[0].validation}. Recieved: ${error.issues[0].input}`,
       pass: false,
     };
   }

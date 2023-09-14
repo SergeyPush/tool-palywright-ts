@@ -7,3 +7,4 @@ state.json
 token.json
 .DS_Store
 .env
+/tests/visual/pages.spec.ts-snapshots/
