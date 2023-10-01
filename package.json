@@ -8,7 +8,8 @@
     "update-snapshots": "npx playwright test tests/visual --update-snapshots",
     "test": "npx playwright test",
     "test-headed": "npx playwright test --headed",
-    "test-api": "npx playwright test --grep @api"
+    "test-api": "npx playwright test --grep @api",
+    "test-cucumber": "npx cucumber-js"
   },
   "keywords": [],
   "author": "",
