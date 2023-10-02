@@ -6,17 +6,12 @@ defineStep("User opens login page", async function () {
   await app.openApp();
 });
 
-defineStep("User submits valid credentials", async function () {
-  await app.loginPage.login("standard_user", "secret_sauce");
-});
-
-defineStep("User submits invalid credentials", async function () {
-  await app.loginPage.login("locked_out_user", "secret_sauce");
-});
-
-defineStep("User submits empty credentials", async function () {
-  await app.loginPage.login("", "");
-});
+defineStep(
+  `User submits username {string} and password {string}`,
+  async function (username, password) {
+    await app.loginPage.login(username, password);
+  }
+);
 
 defineStep("User should see the Home page", async function () {
   const title = await app.homePage.getTitleText();
