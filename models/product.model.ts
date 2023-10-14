@@ -1,35 +1,36 @@
 import { array, object, string, number, boolean } from "valibot";
+import { z } from "zod";
 
-export const ProductSchema = object({
-  id: string(),
-  name: string(),
-  description: string(),
-  stock: number(),
-  price: number(),
-  is_location_offer: number(),
-  is_rental: number(),
-  brand_id: string(),
-  category_id: string(),
-  product_image_id: string(),
-  product_image: object({
-    id: string(),
-    by_name: string(),
-    by_url: string(),
-    source_name: string(),
-    source_url: string(),
-    file_name: string(),
+export const ProductSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  description: z.string(),
+  stock: z.number(),
+  price: z.number(),
+  is_location_offer: z.number(),
+  is_rental: z.number(),
+  brand_id: z.string(),
+  category_id: z.string(),
+  product_image_id: z.string(),
+  product_image: z.object({
+    id: z.string(),
+    by_name: z.string(),
+    by_url: z.string(),
+    source_name: z.string(),
+    source_url: z.string(),
+    file_name: z.string(),
   }),
-  category: object({
-    id: string(),
-    name: string(),
-    slug: string(),
-    parent_id: string(),
+  category: z.object({
+    id: z.string(),
+    name: z.string(),
+    slug: z.string(),
+    parent_id: z.string(),
   }),
-  brand: object({
-    id: string(),
-    name: string(),
-    slug: string(),
+  brand: z.object({
+    id: z.string(),
+    name: z.string(),
+    slug: z.string(),
   }),
 });
 
-export const ProductsSchema = array(ProductSchema);
+export const ProductsSchema = z.array(ProductSchema);
