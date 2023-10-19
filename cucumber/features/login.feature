@@ -1,3 +1,4 @@
+@login
 Feature: Login Feature
 
   As a user 
@@ -6,7 +7,7 @@ Feature: Login Feature
   Scenario: Login with valid credentials
     Given User opens login page
     When User submits username "standard_user" and password "secret_sauce"
-    Then User should see the Home page
+    Then User should be on the Home page
     
 
   Scenario: Login with locked credentials

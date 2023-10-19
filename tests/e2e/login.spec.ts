@@ -9,6 +9,7 @@ test.describe("Login tests", () => {
   });
 
   test("Login page is opened successfully", async ({ app }) => {
+    await app.loginPage.openLoginPage();
     const title = await app.loginPage.getPageTitleText();
     expect(title).toBe("Login");
   });

@@ -4,8 +4,6 @@ import ProductsApi from "./product-api.api";
 import InvoiceApi from "./invoice-api";
 
 class BaseAPI {
-  // apiBaseUrl: string = API_BASE_URL;
-  // api: APIRequestContext;
   auth: AuthAPI;
   productsApi: ProductsApi;
   invoiceApi: InvoiceApi;

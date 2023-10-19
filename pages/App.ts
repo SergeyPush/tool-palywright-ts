@@ -6,9 +6,10 @@ import RegisterPage from "./RegisterPage";
 import LoginPage from "./LoginPage";
 import MyAccountPage from "./MyAccountPage";
 import CartPage from "./CartPage";
+import { BASE_URL } from "../utils/get-config.utils";
 
 class App {
-  private baseUrl: string;
+  private baseUrl: string = BASE_URL;
   homePage: HomePage;
   mainMenu: Menu;
   productPage: ProductPage;
@@ -18,7 +19,6 @@ class App {
   cartPage: CartPage;
 
   constructor(private page: Page) {
-    this.baseUrl = "https://practicesoftwaretesting.com/#";
     this.homePage = new HomePage(page);
     this.mainMenu = new Menu(page);
     this.productPage = new ProductPage(page);

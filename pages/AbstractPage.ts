@@ -2,12 +2,10 @@ import { Page } from "@playwright/test";
 
 class AbstractPage {
   protected page: Page;
-  private baseUrl: string;
-  protected apiBaseUrl: string;
+  private baseUrl: string = "https://practicesoftwaretesting.com/#";
+  protected apiBaseUrl: string = "https://api.practicesoftwaretesting.com";
   constructor(page: Page) {
     this.page = page;
-    this.baseUrl = "https://practicesoftwaretesting.com/#";
-    this.apiBaseUrl = "https://api.practicesoftwaretesting.com";
   }
 
   async getCurrentUrl() {

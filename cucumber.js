@@ -12,11 +12,12 @@ module.exports = {
     requireModule: ["ts-node/register"],
     format: [
       "progress-bar",
-      // "html:test-results/cucumber-report.html",
+      "progress",
+      "html:test-results/cucumber-report.html",
       // "json:test-results/cucumber-report.json",
       // "rerun:@rerun.txt",
     ],
-    parallel: 2,
+    parallel: 1,
   },
   // rerun: {
   //   formatOptions: {

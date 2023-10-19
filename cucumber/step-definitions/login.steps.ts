@@ -1,4 +1,4 @@
-import { defineStep, Given } from "@cucumber/cucumber";
+import { defineStep } from "@cucumber/cucumber";
 import { app } from "../setup/world";
 import { expect } from "chai";
 
@@ -13,7 +13,7 @@ defineStep(
   }
 );
 
-defineStep("User should see the Home page", async function () {
+defineStep("User should be on the Home page", async function () {
   const title = await app.homePage.getTitleText();
   expect(title).to.equal("Products");
 });

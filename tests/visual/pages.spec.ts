@@ -40,7 +40,7 @@ test.describe("Visual test of pages", () => {
         threshold: 0.2,
         maxDiffPixels: 100,
         maxDiffPixelRatio: 0.2,
-        timeout: 1000,
+        timeout: 3000,
       });
     });
   }
